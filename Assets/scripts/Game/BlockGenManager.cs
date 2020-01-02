@@ -28,14 +28,37 @@ public class BlockGenManager : MonoBehaviour
 
         for (int r = 1; r <= numBlockRows; r++)
         {
-            for (int i = 0; -screenWidthSize.x + i * (blockWidth + spaceBetweenBlocks) + blockWidth / 2 < screenWidthSize.x; i++)
             {
-                float yVal = screenWidthSize.y - r*( blockHeight / 2 + topSpace);
-                float xVal = -screenWidthSize.x + blockWidth / 2 + spaceBetweenBlocks + i * (blockWidth + spaceBetweenBlocks);
+                float yVal = screenWidthSize.y - r * (blockHeight / 2 + topSpace);
+                float xVal = 0;
                 Vector3 spawnPos = new Vector3(xVal, yVal, 10);
                 GameObject newBlock = Instantiate(blockPrefab, spawnPos, Quaternion.identity);
                 newBlock.name = "Block";
                 allBlocks.Add(newBlock);
+            }
+
+            for (int i = 1;
+                i * (spaceBetweenBlocks + blockWidth) < screenWidthSize.x &&
+                -i * (spaceBetweenBlocks + blockWidth) > -screenWidthSize.x; 
+                i++)
+            {
+                {
+                    float yVal = screenWidthSize.y - r * (blockHeight / 2 + topSpace);
+                    float xVal = i * (spaceBetweenBlocks + blockWidth);
+                    Vector3 spawnPos = new Vector3(xVal, yVal, 10);
+                    GameObject newBlock = Instantiate(blockPrefab, spawnPos, Quaternion.identity);
+                    newBlock.name = "Block";
+                    allBlocks.Add(newBlock);
+                }
+
+                {
+                    float yVal = screenWidthSize.y - r * (blockHeight / 2 + topSpace);
+                    float xVal = -i * (spaceBetweenBlocks + blockWidth);
+                    Vector3 spawnPos = new Vector3(xVal, yVal, 10);
+                    GameObject newBlock = Instantiate(blockPrefab, spawnPos, Quaternion.identity);
+                    newBlock.name = "Block";
+                    allBlocks.Add(newBlock);
+                }
             }
         }
     }

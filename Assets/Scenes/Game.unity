@@ -951,7 +951,7 @@ MonoBehaviour:
   blockPrefab: {fileID: 4915363894166967487, guid: a5d5d72b344def842b990d1c664c229e,
     type: 3}
   topSpace: 1
-  spaceBetweenBlocks: 0.5
+  spaceBetweenBlocks: 1
   numBlockRows: 4
 --- !u!1 &1045475065
 GameObject:
